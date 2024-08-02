@@ -1,9 +1,10 @@
 package connection
 
 import (
+	"testing"
+
 	docstore "github.com/nats-nui/nui/pkg/storage"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 type docRepoSuite struct {

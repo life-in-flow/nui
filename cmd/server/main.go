@@ -3,13 +3,14 @@ package main
 import (
 	"context"
 	"flag"
+	"os"
+	"os/signal"
+	"syscall"
+
 	"github.com/gofiber/fiber/v2/log"
 	"github.com/nats-nui/nui/internal/app"
 	"github.com/nats-nui/nui/internal/version"
 	"github.com/nats-nui/nui/pkg/logging"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
 var Version string

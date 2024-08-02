@@ -2,6 +2,7 @@ package nui
 
 import (
 	"errors"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/nats-io/nats.go/jetstream"
 )

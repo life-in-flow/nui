@@ -3,6 +3,7 @@ package nui
 import (
 	"context"
 	"errors"
+
 	"github.com/gofiber/contrib/websocket"
 	"github.com/google/uuid"
 	"github.com/nats-nui/nui/internal/ws"

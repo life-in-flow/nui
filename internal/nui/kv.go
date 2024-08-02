@@ -2,9 +2,10 @@ package nui
 
 import (
 	"errors"
+	"time"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/nats-io/nats.go/jetstream"
-	"time"
 )
 
 type BucketState struct {

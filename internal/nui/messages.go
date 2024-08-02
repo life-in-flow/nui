@@ -1,10 +1,11 @@
 package nui
 
 import (
+	"time"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/nats-io/nats.go"
 	"github.com/nats-nui/nui/internal/connection"
-	"time"
 )
 
 type msgReq struct {

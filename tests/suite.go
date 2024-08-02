@@ -2,6 +2,12 @@ package tests
 
 import (
 	"context"
+	"math/rand"
+	"net/http"
+	"strconv"
+	"sync"
+	"time"
+
 	"github.com/gavv/httpexpect/v2"
 	"github.com/nats-io/nats-server/v2/server"
 	"github.com/nats-io/nats.go"
@@ -9,11 +15,6 @@ import (
 	"github.com/nats-nui/nui/internal/nui"
 	"github.com/nats-nui/nui/pkg/logging"
 	"github.com/stretchr/testify/suite"
-	"math/rand"
-	"net/http"
-	"strconv"
-	"sync"
-	"time"
 )
 
 type NuiTestSuite struct {

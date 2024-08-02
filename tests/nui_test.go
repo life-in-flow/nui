@@ -3,13 +3,14 @@ package tests
 import (
 	"context"
 	"encoding/json"
+	"net/http"
+	"testing"
+	"time"
+
 	"github.com/nats-io/nats.go"
 	"github.com/nats-io/nats.go/jetstream"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"net/http"
-	"testing"
-	"time"
 )
 
 func (s *NuiTestSuite) TestConnectionsRest() {

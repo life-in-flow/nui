@@ -2,14 +2,15 @@ package ws
 
 import (
 	"context"
+	"testing"
+	"time"
+
 	"github.com/nats-io/nats.go"
 	"github.com/nats-nui/nui/internal/connection"
 	"github.com/nats-nui/nui/pkg/logging"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"testing"
-	"time"
 )
 
 type mockPool struct {

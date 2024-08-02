@@ -2,11 +2,12 @@ package connection
 
 import (
 	"errors"
-	"github.com/nats-io/nats.go"
-	"github.com/nats-io/nkeys"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/nats-io/nats.go"
+	"github.com/nats-io/nkeys"
 )
 
 type Conn interface {

@@ -3,9 +3,10 @@ package app
 import (
 	"context"
 	"errors"
+	"os"
+
 	"github.com/nats-nui/nui/internal/nui"
 	"github.com/nats-nui/nui/pkg/logging"
-	"os"
 )
 
 // App struct

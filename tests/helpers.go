@@ -2,11 +2,12 @@ package tests
 
 import (
 	"fmt"
-	"github.com/nats-io/nats.go"
-	"github.com/nats-io/nats.go/jetstream"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/nats-io/nats.go"
+	"github.com/nats-io/nats.go/jetstream"
 )
 
 func (s *NuiTestSuite) defaultConn() string {

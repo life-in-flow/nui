@@ -3,13 +3,14 @@ package nui
 import (
 	"context"
 	"errors"
+	"strconv"
+	"strings"
+	"time"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 	"github.com/nats-io/nats.go/jetstream"
 	"github.com/nats-nui/nui/internal/ws"
-	"strconv"
-	"strings"
-	"time"
 )
 
 func (a *App) handleIndexStreams(c *fiber.Ctx) error {

@@ -4,10 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/Masterminds/semver/v3"
 	"github.com/gofiber/fiber/v2"
 	"github.com/nats-nui/nui/internal/version"
-	"net/http"
 )
 
 type About struct {

@@ -2,13 +2,14 @@ package nui
 
 import (
 	"context"
+	"log/slog"
+
 	"github.com/gofiber/contrib/websocket"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/nats-nui/nui/pkg/logging"
 	slogfiber "github.com/samber/slog-fiber"
-	"log/slog"
 )
 
 type App struct {

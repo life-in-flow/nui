@@ -3,6 +3,8 @@ package main
 import (
 	"embed"
 	"flag"
+	"os"
+
 	"github.com/gofiber/fiber/v2/log"
 	"github.com/nats-nui/nui/desktop/mapping"
 	"github.com/nats-nui/nui/internal/app"
@@ -14,7 +16,6 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/linux"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
-	"os"
 )
 
 //go:embed all:frontend/dist-app

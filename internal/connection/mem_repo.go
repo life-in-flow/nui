@@ -3,8 +3,9 @@ package connection
 import (
 	"errors"
 	"sync"
+
+	"github.com/google/uuid"
 )
-import "github.com/google/uuid"
 
 type MemConnRepo struct {
 	conns *sync.Map

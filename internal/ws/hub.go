@@ -3,12 +3,13 @@ package ws
 import (
 	"context"
 	"errors"
+	"sync"
+
 	"github.com/mitchellh/mapstructure"
 	"github.com/nats-io/nats.go"
 	connection2 "github.com/nats-nui/nui/internal/connection"
 	"github.com/nats-nui/nui/pkg/channels"
 	"github.com/nats-nui/nui/pkg/logging"
-	"sync"
 )
 
 type Pool[S Subscription, T Conn[S]] interface {

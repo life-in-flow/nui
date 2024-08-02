@@ -2,9 +2,10 @@ package connection
 
 import (
 	"context"
-	"github.com/nats-io/nats.go"
 	"sync"
 	"time"
+
+	"github.com/nats-io/nats.go"
 )
 
 type NatsConn struct {
