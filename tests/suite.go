@@ -64,7 +64,7 @@ func (s *NuiTestSuite) connectNatsClient() {
 func (s *NuiTestSuite) startNuiServer() {
 
 	mockedLogger := &logging.NullLogger{}
-	nuiSvc, err := nui.Setup(":memory:", mockedLogger)
+	nuiSvc, err := nui.Setup(":memory:", mockedLogger, "", "")
 	s.NoError(err)
 
 	s.NuiServer = nui.NewServer(s.nuiServerPort, nuiSvc, mockedLogger)

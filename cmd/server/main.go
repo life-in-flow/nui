@@ -22,6 +22,8 @@ func main() {
 	logLevel := flag.String("log-level", "info", "log level")
 	logOutput := flag.String("log-output", "", "log output")
 	dbPath := flag.String("db-path", ":memory:", "path to the database")
+	defaultHost := flag.String("default-host", "", "default host to connect to")
+	tlsDir := flag.String("tls-dir", "", "path to TLS certificates")
 
 	flag.Parse()
 	logger, err := logging.NewSlogger(*logLevel, *logOutput)
@@ -37,6 +39,8 @@ func main() {
 		app.WithVersion(Version),
 		app.WithDb(*dbPath),
 		app.WithLogger(logger),
+		app.WithDefaultHost(*defaultHost),
+		app.WithTLS(*tlsDir),
 	)
 	if err != nil {
 		logger.Error(err.Error())

@@ -39,3 +39,13 @@ func WithDb(path string) AppOption {
 		a.dbPath = path
 	}
 }
+func WithDefaultHost(host string) AppOption {
+	return func(a *App) {
+		a.defaultHost = host
+	}
+}
+func WithTLS(path string) AppOption {
+	return func(a *App) {
+		a.tlsDir = path
+	}
+}

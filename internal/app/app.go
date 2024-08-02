@@ -11,12 +11,14 @@ import (
 
 // App struct
 type App struct {
-	ctx        context.Context
-	version    string
-	target     Target
-	l          logging.Slogger
-	dbPath     string
-	serverPort string
+	ctx         context.Context
+	version     string
+	target      Target
+	l           logging.Slogger
+	dbPath      string
+	serverPort  string
+	defaultHost string
+	tlsDir      string
 }
 
 // NewApp creates a new App application struct
@@ -49,7 +51,7 @@ func (a *App) Startup(ctx context.Context) {
 	a.l.Info("Version: " + a.version)
 	a.l.Info("database path: " + a.dbPath)
 
-	nuiSvc, err := nui.Setup(a.dbPath, a.l)
+	nuiSvc, err := nui.Setup(a.dbPath, a.l, a.defaultHost, a.tlsDir)
 	if err != nil {
 		a.l.Error("fatal error setting up app nui service: " + err.Error())
 		os.Exit(1)
