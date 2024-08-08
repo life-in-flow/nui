@@ -10,8 +10,8 @@ require (
 	github.com/dgraph-io/badger/v4 v4.2.0
 	github.com/gavv/httpexpect/v2 v2.16.0
 	github.com/gofiber/contrib/websocket v1.0.0
-	github.com/gofiber/fiber/v2 v2.51.0
-	github.com/google/uuid v1.4.0
+	github.com/gofiber/fiber/v2 v2.52.5
+	github.com/google/uuid v1.5.0
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/nats-io/nats-server/v2 v2.9.19
 	github.com/nats-io/nats.go v1.35.0
@@ -75,7 +75,7 @@ require (
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/tkrajina/go-reflector v0.5.6 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.50.0 // indirect
+	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
