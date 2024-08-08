@@ -1,12 +1,14 @@
 ## be build
-FROM golang:1.21 AS build_be
+FROM --platform=$BUILDPLATFORM golang:1.21 AS build_be
+ARG TARGETOS TARGETARCH
 ARG VERSION
 WORKDIR /src
 RUN --mount=type=bind,target=. \
-    go build -ldflags "-X main.Version=$VERSION" -o /cmd/nui-web ./cmd/server/main.go
+  GOOS=$TARGETOS GOARCH=$TARGETARCH \
+  go build -ldflags "-X main.Version=$VERSION" -o /cmd/nui-web ./cmd/server/main.go
 
 ## frontend build
-FROM node:18 AS build_fe
+FROM --platform=$BUILDPLATFORM node:18 AS build_fe
 WORKDIR /frontend
 COPY --link frontend .
 RUN npm install
