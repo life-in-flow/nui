@@ -12,6 +12,9 @@ on:
 env:
   # Necessary for most environments as build failure can occur due to OOM issues
   NODE_OPTIONS: "--max-old-space-size=4096"
+  # For Google Cloud Artifact Registry
+  IMAGE: us-east1-docker.pkg.dev/dev-deepsky/deepsky-docker/nui
+  REGISTRY: us-east1-docker.pkg.dev
 
 jobs:
   release:
@@ -20,24 +23,24 @@ jobs:
 
     permissions:
       contents: read
-      packages: write
 
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
+          credentials_json: ${{ secrets.DEEPSKY_DEV_GSA_CREDENTIALS }}
+
+      - name: Configure docker for Google Cloud
+        run: gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ${{ env.IMAGE }}
           tags: |
             type=raw,value=latest
 
