@@ -2,6 +2,8 @@ package connection
 
 import (
 	"errors"
+	"os"
+	"path"
 	"strings"
 	"sync"
 	"time"
@@ -35,8 +37,8 @@ func NewConnPool[T Conn](repo ConnRepo, builder func(connection *Connection) (T,
 	}
 }
 
-func NewNatsConnPool(repo ConnRepo) *ConnPool[*NatsConn] {
-	return NewConnPool[*NatsConn](repo, natsBuilder)
+func NewNatsConnPool(repo ConnRepo, tlsDir string) *ConnPool[*NatsConn] {
+	return NewConnPool[*NatsConn](repo, natsBuilder(tlsDir))
 }
 
 func (p *ConnPool[T]) Get(id string) (T, error) {
@@ -86,15 +88,25 @@ func (p *ConnPool[T]) refreshLocked(id string) error {
 	return nil
 }
 
-func natsBuilder(connection *Connection) (*NatsConn, error) {
-	options := []nats.Option{
-		nats.RetryOnFailedConnect(true),
-		nats.MaxReconnects(-1),
-		nats.PingInterval(2 * time.Second),
-		nats.MaxPingsOutstanding(3),
+func natsBuilder(tlsDir string) func(*Connection) (*NatsConn, error) {
+	return func(connection *Connection) (*NatsConn, error) {
+		options := []nats.Option{
+			nats.RetryOnFailedConnect(true),
+			nats.MaxReconnects(-1),
+			nats.PingInterval(2 * time.Second),
+			nats.MaxPingsOutstanding(3),
+		}
+		if tlsDir != "" {
+			if _, err := os.Stat(path.Join(tlsDir, "ca.crt")); err == nil {
+				options = append(options, nats.RootCAs(path.Join(tlsDir, "ca.crt")))
+			}
+			if _, err := os.Stat(path.Join(tlsDir, "tls.crt")); err == nil {
+				options = append(options, nats.ClientCert(path.Join(tlsDir, "tls.crt"), path.Join(tlsDir, "tls.key")))
+			}
+		}
+		options = appendAuthOption(connection, options)
+		return NewNatsConn(strings.Join(connection.Hosts, ", "), options...)
 	}
-	options = appendAuthOption(connection, options)
-	return NewNatsConn(strings.Join(connection.Hosts, ", "), options...)
 }
 
 func appendAuthOption(connection *Connection, options []nats.Option) []nats.Option {
