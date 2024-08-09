@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
 
 env:
   # Necessary for most environments as build failure can occur due to OOM issues
@@ -29,11 +28,13 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Authenticate to Google Cloud
+        if: github.event_name != 'pull_request'
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.DEEPSKY_DEV_GSA_CREDENTIALS }}
 
       - name: Configure docker for Google Cloud
+        if: github.event_name != 'pull_request'
         run: gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
 
       - name: Extract metadata (tags, labels) for Docker
