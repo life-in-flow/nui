@@ -12,7 +12,7 @@ env:
   # Necessary for most environments as build failure can occur due to OOM issues
   NODE_OPTIONS: "--max-old-space-size=4096"
   # For Google Cloud Artifact Registry
-  IMAGE: us-east1-docker.pkg.dev/dev-deepsky/deepsky-docker/nui
+  IMAGE: us-east1-docker.pkg.dev/dev-deepsky/deepsky-public/nui
   REGISTRY: us-east1-docker.pkg.dev
 
 jobs:
