@@ -36,7 +36,7 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "msw": "^1",
     "typescript": "^5.2.2",
-    "vite": "^5.2.12",
+    "vite": "^5.4.6",
     "vitest": "^1.6.0"
   },
   "msw": {
